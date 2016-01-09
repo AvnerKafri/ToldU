@@ -7,7 +7,19 @@
 // 'starter.controllers' is found in controllers.js
 
 /// <reference path="../typings/tsd.d.ts" />
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+
+
+interface CordovaPlugins {
+  Keyboard:any
+}
+
+
+
+angular.module('toldu.services', []);
+angular.module('toldu.controllers', ['toldu.services']);
+//angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','toldu.controllers','toldu.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','toldu.controllers'])
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,9 +30,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+     // var w=<Window>window
+      //window.StatusBar.styleDefault();
+      window.StatusBar.styleDefault()
     }
   });
 })
@@ -42,15 +57,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   // Each tab has its own nav history stack:
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.channels', {
+    url: '/channels',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        templateUrl: 'templates/tab-Channels.html',
+        controller: 'ChannelsCtrl as channelsCtrl'
       }
     }
   })
+    .state('tab.channel-detail', {
+      url: '/channels/:channelId',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/channel-detail.html',
+          //controller: 'ChatDetailCtrl'
+          controller: 'ChannelDetailCtrl'
+        }
+      }
+    })
 
   .state('tab.chats', {
       url: '/chats',
@@ -82,6 +107,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/channels');
 
 });

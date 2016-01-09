@@ -1,4 +1,5 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
+
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
@@ -13,6 +14,9 @@ angular.module('starter.controllers', [])
   //});
 
     const avner=5;
+
+
+
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {

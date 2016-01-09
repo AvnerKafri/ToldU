@@ -1,0 +1,34 @@
+<ion-view view-title="Channels">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chanel in  channelsCtrl.channels" type="item-text-wrap" href="#/tab/channels/{{chanel.id}}">
+        <img ng-src="{{chanel.face}}">
+        <h2>{{chanel.name}}</h2>
+        <p>{{chanel.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chanel)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+
+
+
+<!--
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+
+
+    <div class="item item-divider">Upcoming</div>
+    <ul class="list">
+      <li ng-repeat="channel in channelsCtrl.channels" class="item">
+        {{channel.name}}
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>
+-->

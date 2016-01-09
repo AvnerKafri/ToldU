@@ -7,10 +7,12 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 
+var watch = require('gulp-watch');
+
 var typescript = require('gulp-tsc');
 var paths = {
   sass: ['./scss/**/*.scss'],
-  src: ['./src/*.ts']
+  src: ['./src/**/*.ts']
 }
 
 gulp.task('default', ['sass']);
@@ -44,6 +46,13 @@ gulp.task('watch', function() {
 
 
 });
+
+/*gulp.task('watch', function () {
+  watch(paths.src,function (events, done) {
+    console.log('aaaaaaaaa')
+    gulp.start('compile', done);
+  });
+});*/
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
